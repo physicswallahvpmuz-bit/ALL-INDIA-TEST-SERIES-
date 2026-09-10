@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALL INDIA TEST SERIES - Result</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: #172554;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin: 15px 0 7px;
+    color: #334155;
+}
+
+input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2563eb;
+}
+
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+#error {
+    color: #dc2626;
+    margin-top: 15px;
+    font-size: 14px;
+    display: none;
+}
+
+.success {
+    color: #15803d;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: 22px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">
+            ALL INDIA TEST SERIES
+        </div>
+
+        <div class="subtitle">
+            Result Verification Portal
+        </div>
+
+        <form onsubmit="searchResult(event)">
+
+            <label for="name">Candidate Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter Candidate Name"
+                autocomplete="off"
+            >
+
+            <label for="registration">Registration Number</label>
+            <input
+                type="text"
+                id="registration"
+                placeholder="Enter Registration Number"
+                autocomplete="off"
+            >
+
+            <label for="dob">Date of Birth</label>
+            <input
+                type="date"
+                id="dob"
+            >
+
+            <button type="submit">
+                SEARCH RESULT
+            </button>
+
+        </form>
+
+        <div id="error">
+            Result not found. Please check your details.
+        </div>
+
+        <div id="success"></div>
+
+        <div class="footer">
+            © ALL INDIA TEST SERIES
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function searchResult(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value
+        .trim()
+        .toLowerCase();
+
+    const registration = document.getElementById("registration").value
+        .trim();
+
+    const dob = document.getElementById("dob").value;
+
+    const error = document.getElementById("error");
+    const success = document.getElementById("success");
+
+    error.style.display = "none";
+    success.innerHTML = "";
+
+    /*
+       VERIFIED RESULT DETAILS
+    */
+
+    const correctName = "umang preetam";
+    const correctRegistration = "22715372";
+    const correctDOB = "2010-04-21";
+
+    if (
+        name === correctName &&
+        registration === correctRegistration &&
+        dob === correctDOB
+    ) {
+
+        success.className = "success";
+        success.innerHTML = "✓ Result verified. Opening result...";
+
+        setTimeout(function() {
+
+            window.location.href =
+            "Umang_Preetam_All_India_Test_Results_Photo_Fixed.pdf";
+
+        }, 700);
+
+    } else {
+
+        error.style.display = "block";
+
+    }
+
+}
+
+</script>
+
+</body>
+          </html>
